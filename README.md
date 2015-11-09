@@ -38,6 +38,30 @@ After installing the application you can upload a test file and checking in your
 - Make executable
 - Run to check if it's working
 
+### Log backups to a database
+This latest version incorporates backups to be logged into a database with the following structure:
+
+    +---------------+--------------+------+-----+-------------------+----------------+
+    | Field         | Type         | Null | Key | Default           | Extra          |
+    +---------------+--------------+------+-----+-------------------+----------------+
+    | id            | int(11)      | NO   | PRI | NULL              | auto_increment |
+    | backup_date   | timestamp    | NO   |     | CURRENT_TIMESTAMP |                |
+    | backup_name   | varchar(64)  | NO   |     | NULL              |                |
+    | backup_status | varchar(64)  | NO   |     | NULL              |                |
+    +---------------+--------------+------+-----+-------------------+----------------+
+
+To create it, run:
+
+    CREATE TABLE my_table (
+        id int NOT NULL AUTO_INCREMENT,
+        backup_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        backup_name varchar(64) NOT NULL,
+        backup_status varchar(64) NOT NULL,
+        PRIMARY KEY (id)
+    );
+
+This will be particularly useful for scripts that have been added to cron jobs. The database entry will be updated as the script progresses, thus resulting in entries that are either "Failed" or "Done". This data can then be displayed in a custom page for easy access.
+
 ### Add to cronjob
 - [How Do I Setup a Cron Job (in the Command Line)](http://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)
 - [Using Webmin](http://www.htpcbeginner.com/create-cron-job-with-webmin/)
