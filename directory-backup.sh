@@ -3,8 +3,8 @@
 ###############################################################################
 ## Dropbox Uploader location and configuration
 ###############################################################################
-DROPBOX_UPLOADER=[/path/to/dropbox_uploader.sh]
-CONFIG_FILE=[/path/to/.dropbox_uploader]
+DROPBOX_UPLOADER="[/path/to/dropbox_uploader.sh]"
+CONFIG_FILE="[/path/to/.dropbox_uploader]"
 
 ###############################################################################
 ## File name and directories
@@ -63,7 +63,7 @@ function backupFiles
 function uploadBackup
 {
     echo "Uploading to Dropbox..."
-    if ${DROPBOX_UPLOADER} -f ${CONFIG_FILE} upload ${LOCALPATH}.tar.gz ${REMOTEPATH}.tar.gz; then
+    if ${DROPBOX_UPLOADER} -f ${CONFIG_FILE} upload ${LOCALPATH} ${REMOTEPATH}; then
         echo "Backup ${FILE} has been successfully uploaded to Dropbox"
         db update "Done"
 

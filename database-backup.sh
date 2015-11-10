@@ -3,8 +3,8 @@
 ###############################################################################
 ## Dropbox Uploader location and configuration
 ###############################################################################
-DROPBOX_UPLOADER=[/path/to/dropbox_uploader.sh]
-CONFIG_FILE=[/path/to/.dropbox_uploader]
+DROPBOX_UPLOADER="[/path/to/dropbox_uploader.sh]"
+CONFIG_FILE="[/path/to/.dropbox_uploader]"
 
 ###############################################################################
 ## File name and directories
